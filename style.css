@@ -19,18 +19,20 @@ body {
 
 h1 {
     color: #ff4757;
-    font-size: 24px;
+}
+
+button, .options button {
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
 }
 
 button {
     background-color: #1e90ff;
     color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background 0.3s;
 }
 
 button:hover {
@@ -44,10 +46,6 @@ button:hover {
     background-color: #ff4757;
     color: white;
     font-size: 14px;
-    border: none;
-    border-radius: 5px;
-    padding: 8px;
-    transition: background 0.3s;
 }
 
 .options button:hover {

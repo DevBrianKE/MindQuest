@@ -1,53 +1,14 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
-    color: #333;
-    text-align: center;
-    margin: 0;
-    padding: 20px;
-}
+    text-align-last: center;
+    background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
 
-.container {
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    padding: 20px;
-    max-width: 400px;
-    margin: auto;
-    border: 2px solid #ff4757;
 }
 
 h1 {
-    color: #ff4757;
+    color: #4c51bf;
 }
 
-button, .options button {
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-button {
-    background-color: #1e90ff;
-    color: white;
-}
-
-button:hover {
-    background-color: #ffa502;
-}
-
-.options button {
-    display: block;
-    width: 100%;
-    margin: 8px 0;
-    background-color: #ff4757;
-    color: white;
-    font-size: 14px;
-}
-
-.options button:hover {
-    background-color: #ffa502;
+#question-container {
+    margin-top: 20px;
 }

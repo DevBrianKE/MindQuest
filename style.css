@@ -1,0 +1,14 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align-last: center;
+    background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+
+}
+
+h1 {
+    color: #4c51bf;
+}
+
+#question-container {
+    margin-top: 20px;
+}

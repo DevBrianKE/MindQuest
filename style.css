@@ -12,3 +12,8 @@ h1 {
 #question-container {
     margin-top: 20px;
 }
+.selected {
+    background-color: green;
+    color: white;
+    font-weight: bold;
+}

@@ -17,3 +17,18 @@ h1 {
     color: white;
     font-weight: bold;
 }
+
+#next-btn {
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #4c51bf;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#next-btn:hover {
+    background-color: green;
+}

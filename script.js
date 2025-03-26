@@ -7,7 +7,15 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
             const response = await fetch("https://opentdb.com/api.php?amount=5&difficulty=easy");
             const data = await response.json();
-            questionContainer.innerHTML = `<p>First question: ${data.results[0].question}</p>`;
+            const question = data.results[0]
+
+
+            let answers = [...question.incorrect_answers, question.correct_answer].sort(() => Math.random() - 0.5)
+
+            questionContainer.innerHTML = `
+                <h3>${question.question}</h3>
+                ${answers.map(answer => `<button>${answer}</button>`).join('')}
+            `;
         } catch (error) {
             questionContainer.innerHTML = `<p>Error loading questions.</p>`;
         }

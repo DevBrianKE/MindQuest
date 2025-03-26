@@ -1,6 +1,7 @@
 // Wait for the DOM to fully load before running the script
 document.addEventListener("DOMContentLoaded", () => {
     const questionContainer = document.getElementById("question-container");
+    const nextBtn = document.getElementById("next-btn") //Selecet "Next" button
 
     // Function to fetch trivia questions from an API
     async function fetchQuestions() {
@@ -11,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             let answers = [...question.incorrect_answers, question.correct_answer].sort(() => Math.random() - 0.5);
 
+            // Display the new question and answer choices
             questionContainer.innerHTML = `
                 <h3>${question.question}</h3>
                 <div class="options">
@@ -18,6 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
             `;
 
+             // Add event listeners for selecting an answer
             document.querySelectorAll(".option-btn").forEach(button => {
                 button.addEventListener("click", (e) => {
                     document.querySelectorAll(".option-btn").forEach(btn => btn.classList.remove("selected"));
@@ -30,4 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
     fetchQuestions();
+
+    // Event listener to fetch a new question when "Next" button is clicked
+    nextBtn.addEventListener("click", fetchQuestions);
 });

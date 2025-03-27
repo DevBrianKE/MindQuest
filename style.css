@@ -1,7 +1,7 @@
 /* Global styles */
 body {
     font-family: Arial, sans-serif;
-    text-align: center; /* Fixed text alignment */
+    text-align: center;
     background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
 }
 
@@ -22,18 +22,30 @@ h1 {
     font-weight: bold;
 }
 
-/* "Next Question" button styling */
-#next-btn {
-    margin-top: 20px;
+/* Button styling */
+button {
+    margin: 10px;
     padding: 10px;
     font-size: 16px;
-    background-color: #4c51bf;
-    color: white;
     border: none;
     cursor: pointer;
     border-radius: 5px;
 }
 
+#next-btn {
+    background-color: #4c51bf;
+    color: white;
+}
+
 #next-btn:hover {
     background-color: green;
+}
+
+#prev-btn {
+    background-color: gray;
+    color: white;
+}
+
+#prev-btn:hover {
+    background-color: darkgray;
 }

@@ -1,23 +1,28 @@
+/* Global styles */
 body {
     font-family: Arial, sans-serif;
-    text-align-last: center;
+    text-align: center; /* Fixed text alignment */
     background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
-
 }
 
+/* Header styling */
 h1 {
     color: #4c51bf;
 }
 
+/* Question container */
 #question-container {
     margin-top: 20px;
 }
+
+/* Selected answer styling */
 .selected {
     background-color: green;
     color: white;
     font-weight: bold;
 }
 
+/* "Next Question" button styling */
 #next-btn {
     margin-top: 20px;
     padding: 10px;

@@ -24,6 +24,10 @@ document.addEventListener("DOMContentLoaded", () => {
             });
 
             displayQuestion();
+
+            // Reset Next and Previous buttons
+            nextBtn.style.display = "inline-block";
+            prevBtn.style.display = "inline-block";
         } catch (error) {
             console.error("Fetch Error:", error);
             questionContainer.innerHTML = `<p style="color: red;">Error loading questions. Try again.</p>`;
@@ -84,6 +88,10 @@ document.addEventListener("DOMContentLoaded", () => {
             currentIndex = 0;
             userAnswers = [];
             fetchQuestions();
+
+            // Make Next and Previous buttons visible again
+            nextBtn.style.display = "inline-block";
+            prevBtn.style.display = "inline-block";
         });
 
         nextBtn.style.display = "none";
@@ -107,5 +115,5 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Fetch questions on page load
-    fetchQuestions(20);
+    fetchQuestions(5);
 });

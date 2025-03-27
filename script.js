@@ -66,12 +66,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Function to show final results
     function showResults() {
+        let correctCount = 0;
         let resultHTML = `<h2>Final Summary</h2>`;
         resultHTML += `<ul>`;
         
         questionHistory.forEach((q, i) => {
             let userAnswer = userAnswers[i] || "No answer selected";
             let isCorrect = userAnswer === q.correct_answer;
+            if (isCorrect) correctCount++;
+
             resultHTML += `
                 <li>
                     <strong>Q${i + 1}: ${q.question}</strong><br>
@@ -81,7 +84,9 @@ document.addEventListener("DOMContentLoaded", () => {
             `;
         });
 
-        resultHTML += `</ul><button id="restart-btn">Restart Quiz</button>`;
+        resultHTML += `</ul>`;
+        resultHTML += `<h3>You got ${correctCount} out of ${questionHistory.length} questions correct!</h3>`;
+        resultHTML += `<button id="restart-btn">Restart Quiz</button>`;
         questionContainer.innerHTML = resultHTML;
 
         document.getElementById("restart-btn").addEventListener("click", () => {

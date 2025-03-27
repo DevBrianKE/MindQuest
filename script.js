@@ -2,14 +2,21 @@ document.addEventListener("DOMContentLoaded", () => {
     const questionContainer = document.getElementById("question-container");
     const nextBtn = document.getElementById("next-btn");
     const prevBtn = document.getElementById("prev-btn");
+    const startBtn = document.getElementById("start-btn");
+    const numQuestionsInput = document.getElementById("num-questions");
 
     let questionHistory = [];
     let currentIndex = 0;
     let userAnswers = [];
 
-    // Function to fetch multiple questions
-    async function fetchQuestions(amount = 5) {
+    // Function to fetch questions
+    async function fetchQuestions(amount) {
         try {
+            if (amount < 1 || amount > 20) {
+                alert("Please enter a number between 1 and 20.");
+                return;
+            }
+
             const response = await fetch(`https://opentdb.com/api.php?amount=${amount}&type=multiple`);
             if (!response.ok) throw new Error(`HTTP Error! Status: ${response.status}`);
 
@@ -23,9 +30,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 return { question: q.question, correct_answer: q.correct_answer, answers };
             });
 
+            currentIndex = 0;
+            userAnswers = new Array(amount).fill(null);
             displayQuestion();
 
-            // Reset Next and Previous buttons
+            // Show Next and Previous buttons
             nextBtn.style.display = "inline-block";
             prevBtn.style.display = "inline-block";
         } catch (error) {
@@ -67,36 +76,35 @@ document.addEventListener("DOMContentLoaded", () => {
     // Function to show final results
     function showResults() {
         let correctCount = 0;
-        let resultHTML = `<h2>Final Summary</h2>`;
-        resultHTML += `<ul>`;
-        
+        let resultHTML = `<h2>Quiz Results</h2>`;
+
         questionHistory.forEach((q, i) => {
             let userAnswer = userAnswers[i] || "No answer selected";
             let isCorrect = userAnswer === q.correct_answer;
             if (isCorrect) correctCount++;
 
             resultHTML += `
-                <li>
+                <div class="result-item">
                     <strong>Q${i + 1}: ${q.question}</strong><br>
-                    Your Answer: <span style="color: ${isCorrect ? 'green' : 'red'};">${userAnswer}</span><br>
-                    Correct Answer: <span style="color: green;">${q.correct_answer}</span>
-                </li><br>
+                    Your Answer: <span class="${isCorrect ? 'correct' : 'wrong'}">${userAnswer}</span><br>
+                    Correct Answer: <span class="correct">${q.correct_answer}</span>
+                </div>
+                <hr>
             `;
         });
 
-        resultHTML += `</ul>`;
-        resultHTML += `<h3>You got ${correctCount} out of ${questionHistory.length} questions correct!</h3>`;
-        resultHTML += `<button id="restart-btn">Restart Quiz</button>`;
+        resultHTML = `
+            <h2>Your Score: ${correctCount} / ${questionHistory.length}</h2>
+            ${resultHTML}
+            <button id="restart-btn">Restart Quiz</button>
+        `;
+
         questionContainer.innerHTML = resultHTML;
 
         document.getElementById("restart-btn").addEventListener("click", () => {
-            currentIndex = 0;
-            userAnswers = [];
-            fetchQuestions();
-
-            // Make Next and Previous buttons visible again
-            nextBtn.style.display = "inline-block";
-            prevBtn.style.display = "inline-block";
+            questionContainer.innerHTML = "";
+            nextBtn.style.display = "none";
+            prevBtn.style.display = "none";
         });
 
         nextBtn.style.display = "none";
@@ -105,9 +113,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Next button logic
     nextBtn.addEventListener("click", () => {
-        if (currentIndex < questionHistory.length) {
+        if (currentIndex < questionHistory.length - 1) {
             currentIndex++;
             displayQuestion();
+        } else {
+            showResults();
         }
     });
 
@@ -119,6 +129,13 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Fetch questions on page load
-    fetchQuestions(5);
+    // Start Quiz Button
+    startBtn.addEventListener("click", () => {
+        let numQuestions = parseInt(numQuestionsInput.value);
+        fetchQuestions(numQuestions);
+    });
+
+    // Hide buttons initially
+    nextBtn.style.display = "none";
+    prevBtn.style.display = "none";
 });

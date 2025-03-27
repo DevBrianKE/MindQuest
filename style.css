@@ -22,6 +22,22 @@ h1 {
     font-weight: bold;
 }
 
+/* Results display */
+.result-item {
+    padding: 10px;
+    text-align: left;
+}
+
+.correct {
+    color: green;
+    font-weight: bold;
+}
+
+.wrong {
+    color: red;
+    font-weight: bold;
+}
+
 /* Button styling */
 button {
     margin: 10px;
@@ -30,6 +46,11 @@ button {
     border: none;
     cursor: pointer;
     border-radius: 5px;
+}
+
+#start-btn {
+    background-color: #4caf50;
+    color: white;
 }
 
 #next-btn {
@@ -48,4 +69,9 @@ button {
 
 #prev-btn:hover {
     background-color: darkgray;
+}
+
+#restart-btn {
+    background-color: red;
+    color: white;
 }

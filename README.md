@@ -1,7 +1,5 @@
 # MindQuest - Trivia Game
 
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-Click%20Here-brightgreen)](https://devbrianke.github.io/MindQuest/)
-
 MindQuest is a fun and interactive trivia game that challenges your knowledge with multiple-choice questions from various categories. Built using **HTML, CSS, and JavaScript**, it fetches trivia questions dynamically from the Open Trivia Database (OpenTDB) API.
 
 ## Live Demo

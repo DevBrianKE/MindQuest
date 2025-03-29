@@ -16,16 +16,6 @@ MindQuest is a fun and interactive trivia game that challenges your knowledge wi
 - Displays final results with correct and incorrect answers.
 - Option to restart the quiz.
 
-## Screenshots
-### Home Screen
-![Home Screen](assets/Home_screenshot.png)
-
-### Question Screen
-![Question Screen](assets/Question_screenshot.png)
-
-### Results Screen
-![Results Screen](assets/Results_screenshoot.png)
-
 ## Tech Stack
 - **HTML5** - Structure and layout
 - **CSS3** - Styling and animations

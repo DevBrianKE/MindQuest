@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
             const response = await fetch(`https://opentdb.com/api.php?amount=${amount}&type=multiple`);
             if (!response.ok) throw new Error(`HTTP Error! Status: ${response.status}`);
-            
+
             const data = await response.json();
             questionHistory = data.results.map(q => {
                 let answers = [...q.incorrect_answers, q.correct_answer];
@@ -104,17 +104,43 @@ document.addEventListener("DOMContentLoaded", () => {
         leaderboard.push({ username, score });
         leaderboard.sort((a, b) => b.score - a.score);
         localStorage.setItem("leaderboard", JSON.stringify(leaderboard));
-        fetchLeaderboard();
+
+        // Send data to backend (db.json)
+        fetch("http://localhost:3000/leaderboard", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ username, score })
+        })
+        .then(response => {
+            if (!response.ok) throw new Error("Failed to save score to backend");
+            return response.json();
+        })
+        .then(data => {
+            console.log("Score saved to backend:", data);
+            fetchLeaderboard(); // Refresh leaderboard from backend
+        })
+        .catch(error => console.error("Error saving score:", error));
     }
 
     function fetchLeaderboard() {
-        let leaderboard = JSON.parse(localStorage.getItem("leaderboard")) || [];
-        leaderboardList.innerHTML = "";
-        leaderboard.forEach((entry, index) => {
-            const li = document.createElement("li");
-            li.innerHTML = `<strong>${index + 1}. ${entry.username}</strong>: ${entry.score} points`;
-            leaderboardList.appendChild(li);
-        });
+        fetch("http://localhost:3000/leaderboard")
+            .then(response => {
+                if (!response.ok) throw new Error("Failed to fetch leaderboard");
+                return response.json();
+            })
+            .then(leaderboard => {
+                leaderboardList.innerHTML = "";
+                leaderboard
+                    .sort((a, b) => b.score - a.score) // Sort by highest score
+                    .forEach((entry, index) => {
+                        const li = document.createElement("li");
+                        li.innerHTML = `<strong>${index + 1}. ${entry.username}</strong>: ${entry.score} points`;
+                        leaderboardList.appendChild(li);
+                    });
+            })
+            .catch(error => console.error("Error fetching leaderboard:", error));
     }
 
     startBtn.addEventListener("click", () => {

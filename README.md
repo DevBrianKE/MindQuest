@@ -28,20 +28,6 @@ MindQuest now features a **Node.js backend** hosted on **Render** that handles t
 3. The frontend fetches and displays the **top scores** from the leaderboard in real time.
 4. When you add a memeber the member is reflect on the db.json in vs-code  
 
-## Screenshots  
-
-### Home Screen  
-![Home Screen](assets/Home_screenshot.png)  
-
-### Question Screen  
-![Question Screen](assets/Question_screenshot.png)  
-
-### Results Screen  
-![Results Screen](assets/Results_screenshoot.png)  
-
-### Leaderboard  
-![Leaderboard](assets/Leaderboard_screenshot.png)  
-
 ## Tech Stack  
 MindQuest is built using the following technologies:
 

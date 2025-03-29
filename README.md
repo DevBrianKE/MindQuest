@@ -5,6 +5,9 @@ MindQuest is an engaging and interactive trivia game designed to test your knowl
 ## Live Demo  
 [Play MindQuest Now](https://devbrianke.github.io/MindQuest/)
 
+## Backend Repository  
+- Backend Repository: [MindQuest Backend](https://github.com/DevBrianKE/trivia-backend)
+
 ## Features  
 - Fetches random multiple-choice trivia questions from **OpenTDB API**.  
 - Users can customize the number of questions (1-20).  
@@ -105,4 +108,5 @@ We welcome contributions! To improve the game, follow these steps:
 
 ## License  
 This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for more details.
+
 

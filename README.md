@@ -18,7 +18,6 @@ MindQuest is an engaging and interactive trivia game designed to test your knowl
 MindQuest now features a **Node.js backend** hosted on **Render** that handles the leaderboard functionality. When a player finishes the quiz and submits their score, the data is sent to the backend, which stores it in a **database**. The leaderboard dynamically retrieves and displays the top scores.
 
 ### Backend Features
-- **REST API** built with **Node.js and Express.js**.  
 - Stores leaderboard data in a **database hosted on Render**.  
 - API endpoints for submitting and retrieving top scores.  
 - Secure and scalable to handle multiple player submissions.  
@@ -26,7 +25,8 @@ MindQuest now features a **Node.js backend** hosted on **Render** that handles t
 ### How the Leaderboard Works
 1. When a player completes the quiz on the **GitHub Pages frontend**, their name and score are sent via an API request to the backend.  
 2. The backend **stores** this data in the **database** hosted on **Render**.  
-3. The frontend fetches and displays the **top scores** from the leaderboard in real time.  
+3. The frontend fetches and displays the **top scores** from the leaderboard in real time.
+4. When you add a memeber the member is reflect on the db.json in vs-code  
 
 ## Screenshots  
 

@@ -1,9 +1,14 @@
+
 document.addEventListener("DOMContentLoaded", () => {
-    const questionContainer = document.getElementById("question-container");
-    const nextBtn = document.getElementById("next-btn");
-    const prevBtn = document.getElementById("prev-btn");
     const startBtn = document.getElementById("start-btn");
     const numQuestionsInput = document.getElementById("num-questions");
+
+    const questionContainer = document.getElementById("question-container");
+
+    const nextBtn = document.getElementById("next-btn");
+    const prevBtn = document.getElementById("prev-btn");
+    
+
 
     let questionHistory = [];
     let currentIndex = 0;
